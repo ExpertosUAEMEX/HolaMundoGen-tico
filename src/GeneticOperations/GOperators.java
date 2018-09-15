@@ -27,13 +27,26 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GOperators {
 
     private static Random r = new Random(System.currentTimeMillis());
+    /*Diccionario en ASCII*/
+    public static final int[] dict = {
+        32, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 65, 66, 67, 68, 69,
+        70, 71, 72, 73, 74, 75, 76,
+        77, 78, 79, 80, 81, 82, 83, 84,
+        85, 86, 87, 88, 89, 90, 97, 98, 99,
+        100, 101, 102, 103, 104, 105, 106,
+        107, 108, 109, 110, 111, 112, 113,
+        114, 115, 116, 117, 118, 119, 120,
+        121, 122
+
+    };
 
     public static String cruising(String s1, String s2) {
         int f = 0;
         String s = "";
-        
+
         for (int i = 0; i < s1.length(); i += 2) {
-            if(s1.length()%2==0){
+            if (s1.length() % 2 == 0) {
                 if (f == 1) {
                     s += s2.substring(i, i + 2);
                     f = 0;
@@ -41,7 +54,7 @@ public class GOperators {
                     s += s1.substring(i, i + 2);
                     f = 1;
                 }
-            }else{
+            } else {
 
                 if (i == s1.length() - 1) {
                     s += s1.charAt(i);
@@ -59,7 +72,7 @@ public class GOperators {
     }
 
     public static String mutate(String s) {
-        s = s.replace(s.charAt(r.nextInt(s.length())), (char) ThreadLocalRandom.current().nextInt(97, 122));
+        s = s.replace(s.charAt(r.nextInt(s.length())), (char) dict[ThreadLocalRandom.current().nextInt(dict.length)]);
         return s;
     }
 }

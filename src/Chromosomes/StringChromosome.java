@@ -1,5 +1,6 @@
 package Chromosomes;
 
+import GeneticOperations.GOperators;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -7,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author cachubis
  */
 public class StringChromosome {
-
+    
     private int numGene;
     private String chromosome;
 
@@ -36,7 +37,7 @@ public class StringChromosome {
     private void generate() {
         chromosome = "";
         for (int i = 0; i < numGene; i++) {
-            chromosome += (char) ThreadLocalRandom.current().nextInt(97, 122);
+            chromosome += (char) GOperators.dict[ThreadLocalRandom.current().nextInt(GOperators.dict.length)];
         }
     }
 
